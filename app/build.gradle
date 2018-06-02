@@ -1,0 +1,158 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'jacoco-android'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.mcu.nikhil.mcuheroes"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.compileSdkVersion
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+
+
+        dataBinding {
+            enabled = true
+        }
+
+
+        /* replaced with custom MockTestRunner */
+        // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.mirhoseini.marvel.MarvelTestRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+
+            // Run code coverage reports by default on debug builds.
+            testCoverageEnabled true
+        }
+    }
+
+    // Specifies two flavor dimensions.
+    flavorDimensions "tier", "mock"
+
+    productFlavors {
+        prod {
+            dimension "tier"
+        }
+
+        mock {
+            dimension "mock"
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    /* allow using java 8 lambda */
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    /* fixes espresso conflict with supportAnnotation and androidSupport new versions */
+    configurations.all {
+        resolutionStrategy {
+            force rootProject.ext.testLibraries.supportAnnotations
+            force rootProject.ext.libraries.androidSupport
+            force rootProject.ext.libraries.appCompat
+            force rootProject.ext.libraries.designSupport
+            force rootProject.ext.libraries.recyclerView
+        }
+    }
+
+}
+
+// Grant animation permissions to avoid test failure because of ui sync.
+task grantAnimationPermissions(type: Exec, dependsOn: 'installMock') {
+    group = 'test'
+    description = 'Grant permissions for testing.'
+
+    def absolutePath = file('..') // Get project absolute path
+    commandLine "$absolutePath/set_animation_permissions.sh com.mirhoseini.marvel".split(" ")
+}
+// Source: http://stackoverflow.com/q/29908110/112705
+afterEvaluate {
+    tasks.each { task ->
+        if (task.name.startsWith('assembleMockAndroidTest')) {
+            task.dependsOn grantAnimationPermissions
+        }
+    }
+}
+
+jacocoAndroidUnitTestReport {
+    // fix jacoco issue with ButterKnife
+    excludes += ['**/*$ViewBinder*.*']
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //for compiling the core module we have made, otherwise we won't be able to use it's functions
+    implementation project(':core-lib')
+    //----------------------------------------
+    testImplementation rootProject.ext.testLibraries.junit
+    testImplementation rootProject.ext.testLibraries.robolectric
+
+    androidTestImplementation rootProject.ext.testLibraries.mockito
+    androidTestImplementation rootProject.ext.testLibraries.dexmaker
+    androidTestImplementation rootProject.ext.testLibraries.dexmakerMockito
+    androidTestImplementation rootProject.ext.testLibraries.supportTestRunner
+    androidTestImplementation rootProject.ext.testLibraries.supportAnnotations
+    androidTestImplementation rootProject.ext.testLibraries.espresso
+    androidTestImplementation rootProject.ext.testLibraries.espressoContrib
+    // Test helpers
+//    androidTestImplementation rootProject.ext.testLibraries.room
+
+    implementation rootProject.ext.libraries.constraintLayout
+    implementation rootProject.ext.libraries.appCompat
+    implementation rootProject.ext.libraries.androidSupport
+    implementation rootProject.ext.libraries.designSupport
+    implementation rootProject.ext.libraries.vectorSupport
+    implementation rootProject.ext.libraries.recyclerView
+    implementation rootProject.ext.libraries.cardView
+    implementation rootProject.ext.libraries.palette
+//    implementation rootProject.ext.libraries.room
+    // optional - RxJava support for Room
+//    implementation rootProject.ext.libraries.roomrx
+//    annotationProcessor rootProject.ext.aptLibraries.roomCompiler
+
+    implementation rootProject.ext.libraries.rxandroid
+    implementation rootProject.ext.libraries.rxjava
+    implementation rootProject.ext.libraries.rxbinding
+
+
+    implementation rootProject.ext.libraries.utils
+
+    implementation rootProject.ext.libraries.picasso
+
+    implementation rootProject.ext.libraries.butterknife
+    annotationProcessor rootProject.ext.aptLibraries.butterknifeCompiler
+
+    implementation rootProject.ext.libraries.dagger
+    annotationProcessor rootProject.ext.aptLibraries.daggerCompiler
+    androidTestAnnotationProcessor rootProject.ext.aptLibraries.daggerCompiler
+
+    implementation rootProject.ext.libraries.timber
+
+    implementation rootProject.ext.libraries.ormLite
+
+    implementation rootProject.ext.libraries.firebaseCore
+    implementation rootProject.ext.libraries.firebaseCrash
+    implementation 'com.android.support:support-annotations:25.0.0'
+    //-----------------------------------------
+}

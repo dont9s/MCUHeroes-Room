@@ -1,0 +1,54 @@
+apply plugin: 'java-library'
+apply plugin: 'jacoco'
+apply plugin: 'me.tatarka.retrolambda'
+
+
+configurations {
+    provided
+}
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+
+retrolambda {
+
+    javaVersion JavaVersion.VERSION_1_7
+    jvmArgs '-noverify' , '-arg1', '-arg2'
+    defaultMethods false
+    incremental true
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.libraries.rxjava
+
+    testImplementation rootProject.ext.testLibraries.junit
+    testImplementation rootProject.ext.testLibraries.mockito
+
+    implementation rootProject.ext.libraries.retrofit
+    implementation rootProject.ext.libraries.retrofitConverter
+    implementation rootProject.ext.libraries.retrofitAdapter
+
+    implementation rootProject.ext.libraries.okhttp
+    implementation rootProject.ext.libraries.okhttpLogging
+
+    implementation rootProject.ext.libraries.dagger
+    provided rootProject.ext.aptLibraries.daggerCompiler
+
+    implementation rootProject.ext.libraries.ormLiteCore
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

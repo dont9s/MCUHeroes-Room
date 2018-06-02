@@ -1,0 +1,5 @@
+include ':mcu-app', ':core-lib', ':console', ':test'
+project(':mcu-app').projectDir = new File('app')
+//
+//project(':mcu-core').projectDir = new File("${rootProject.path}/../core-lib")
+////project(':mcu-console').projectDir = new File('console')
