@@ -3,7 +3,7 @@ package com.mcu.nikhil.mcuheroes;
 import android.app.Application;
 import android.content.Context;
 
-public abstract class MCUHeroesApplication extends Application {
+public class MCUHeroesApplication extends Application {
 
     private static ApplicationComponent component;
 
@@ -17,8 +17,6 @@ public abstract class MCUHeroesApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        initApplication();
-
         component = createComponent();
     }
 
@@ -26,5 +24,4 @@ public abstract class MCUHeroesApplication extends Application {
         return null;
     }
 
-    public abstract void initApplication();
 }

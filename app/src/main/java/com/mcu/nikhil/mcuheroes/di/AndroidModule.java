@@ -1,7 +1,9 @@
-package com.mcu.nikhil.mcuheroes;
+package com.mcu.nikhil.mcuheroes.di;
 
 import android.content.Context;
 import android.content.res.Resources;
+
+import com.mcu.nikhil.mcuheroes.MCUHeroesApplication;
 
 import javax.inject.Singleton;
 

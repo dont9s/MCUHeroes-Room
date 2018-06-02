@@ -3,6 +3,7 @@
     package="com.mcu.nikhil.mcuheroes">
 
     <application
+        android:name=".MCUHeroesApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

@@ -1,7 +1,4 @@
 apply plugin: 'java-library'
-apply plugin: 'jacoco'
-apply plugin: 'me.tatarka.retrolambda'
-
 
 configurations {
     provided
@@ -11,24 +8,6 @@ sourceSets {
         compileClasspath += configurations.provided
     }
 }
-
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled true
-    }
-}
-
-retrolambda {
-
-    javaVersion JavaVersion.VERSION_1_7
-    jvmArgs '-noverify' , '-arg1', '-arg2'
-    defaultMethods false
-    incremental true
-
-}
-
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -50,5 +29,7 @@ dependencies {
     implementation rootProject.ext.libraries.ormLiteCore
 }
 
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
+compileJava {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}

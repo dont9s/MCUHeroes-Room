@@ -1,4 +1,4 @@
-package com.mcu.nikhil.core_lib.domain;
+package com.mcu.nikhil.mcuheroes.di;
 
 
 import com.mcu.nikhil.core_lib.util.StateManager;
@@ -80,13 +80,13 @@ public class ClientModule {
             Response response = chain.proceed(chain.request());
 
             CacheControl cacheControl = new CacheControl.Builder()
-                    .maxAge(maxAgeMin , TimeUnit.MINUTES)
+                    .maxAge(maxAgeMin, TimeUnit.MINUTES)
                     .build();
 
             return response.newBuilder()
                     .removeHeader(PRAGMA)
                     .removeHeader(CACHE_CONTROL)
-                    .header(CACHE_CONTROL  , cacheControl.toString())
+                    .header(CACHE_CONTROL, cacheControl.toString())
                     .build();
         };
     }
@@ -99,9 +99,9 @@ public class ClientModule {
         return chain -> {
             Request request = chain.request();
 
-            if(!stateManager.isConnect()){
+            if (!stateManager.isConnect()) {
                 CacheControl cacheControl = new CacheControl.Builder()
-                        .maxStale(maxStaleDelay , TimeUnit.DAYS)
+                        .maxStale(maxStaleDelay, TimeUnit.DAYS)
                         .build();
 
                 request = request.newBuilder()
@@ -118,28 +118,28 @@ public class ClientModule {
     @Named("retryInterceptor")
     public Interceptor provideRetryInterceptor(@Named("retryCount") int retryCount){
         return chain -> {
-          Request request = chain.request();
-          Response response = null;
-            IOException  exception = null;
+            Request request = chain.request();
+            Response response = null;
+            IOException exception = null;
 
             int tryCount = 0;
-            while (tryCount < retryCount && (null == response || !response.isSuccessful())){
+            while (tryCount < retryCount && (null == response || !response.isSuccessful())) {
                 //retry the request
-                try{
+                try {
                     response = chain.proceed(request);
-                }catch (IOException e){
+                } catch (IOException e) {
                     exception = e;
-                }finally {
+                } finally {
                     tryCount++;
                 }
             }
 
             //throw last exception
-            if(null == response  && null != exception)
+            if (null == response && null != exception)
                 throw exception;
 
             //otherwise pass the original response on
-            return  response;
+            return response;
         };
     }
 

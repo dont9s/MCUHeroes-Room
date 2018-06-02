@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'jacoco-android'
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -11,12 +9,6 @@ android {
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
-
-
-        dataBinding {
-            enabled = true
-        }
-
 
         /* replaced with custom MockTestRunner */
         // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -61,8 +53,8 @@ android {
 
     /* allow using java 8 lambda */
     compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     /* fixes espresso conflict with supportAnnotation and androidSupport new versions */
     configurations.all {
@@ -93,12 +85,6 @@ afterEvaluate {
         }
     }
 }
-
-jacocoAndroidUnitTestReport {
-    // fix jacoco issue with ButterKnife
-    excludes += ['**/*$ViewBinder*.*']
-}
-
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -154,5 +140,12 @@ dependencies {
     implementation rootProject.ext.libraries.firebaseCore
     implementation rootProject.ext.libraries.firebaseCrash
     implementation 'com.android.support:support-annotations:25.0.0'
+
+    implementation rootProject.ext.libraries.retrofit
+    implementation rootProject.ext.libraries.retrofitConverter
+    implementation rootProject.ext.libraries.retrofitAdapter
+
+    implementation rootProject.ext.libraries.okhttp
+    implementation rootProject.ext.libraries.okhttpLogging
     //-----------------------------------------
 }

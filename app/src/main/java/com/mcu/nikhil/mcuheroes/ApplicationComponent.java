@@ -1,8 +1,10 @@
 package com.mcu.nikhil.mcuheroes;
 
-import com.mcu.nikhil.core_lib.domain.ApiModule;
-import com.mcu.nikhil.core_lib.domain.ClientModule;
-import com.mcu.nikhil.mcuheroes.database.DatabaseModule;
+import com.mcu.nikhil.mcuheroes.di.AndroidModule;
+import com.mcu.nikhil.mcuheroes.di.ApiModule;
+import com.mcu.nikhil.mcuheroes.di.ApplicationModule;
+import com.mcu.nikhil.mcuheroes.di.ClientModule;
+import com.mcu.nikhil.mcuheroes.di.DatabaseModule;
 
 import javax.inject.Singleton;
 

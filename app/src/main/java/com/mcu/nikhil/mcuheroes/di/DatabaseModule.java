@@ -1,6 +1,7 @@
-package com.mcu.nikhil.mcuheroes.database;
+package com.mcu.nikhil.mcuheroes.di;
 
 import com.mcu.nikhil.core_lib.database.DatabaseHelper;
+import com.mcu.nikhil.mcuheroes.database.DatabaseHelperImpl;
 
 import javax.inject.Singleton;
 
