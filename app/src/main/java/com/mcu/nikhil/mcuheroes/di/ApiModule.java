@@ -1,4 +1,4 @@
-package com.mcu.nikhil.core_lib.domain;
+package com.mcu.nikhil.mcuheroes.di;
 
 import com.google.gson.Gson;
 import com.mcu.nikhil.core_lib.domain.client.MarvelApi;

@@ -2,6 +2,7 @@ package com.mcu.nikhil.core_lib.character.search;
 
 import com.mcu.nikhil.core_lib.database.DatabaseHelper;
 import com.mcu.nikhil.core_lib.database.mapper.Mapper;
+import com.mcu.nikhil.core_lib.database.model.CharacterModel;
 import com.mcu.nikhil.core_lib.domain.model.MarvelCharactersResponse;
 import com.mcu.nikhil.core_lib.util.Constants;
 import com.mcu.nikhil.core_lib.util.SchedulerProvider;
@@ -13,6 +14,8 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.exceptions.Exceptions;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 public class SearchPresenterImpl implements SearchPresenter {
 
@@ -73,29 +76,29 @@ public class SearchPresenterImpl implements SearchPresenter {
                 })
                 .observeOn(scheduler.mainThread())
                 .subscribe(character -> {
-                            if (view != null) {
-                                view.hideProgress();
-                                view.showCharacter(character);
+                    if (view != null) {
+                        view.hideProgress();
+                        view.showCharacter(character);
 
-                                if(!isConnected){
-                                    view.showOfflineMessage(false);
-                                }
-                            }
+                        if (!isConnected) {
+                            view.showOfflineMessage(false);
                         }
+                    }
+                }
                         ,
                         //handle exceptions
                         throwable -> {
                             if (view != null) {
                                 view.hideProgress();
 
-                                if(isConnected){
-                                    if(throwable instanceof ApiResponseCodeException)
+                                if (isConnected) {
+                                    if (throwable instanceof ApiResponseCodeException)
                                         view.showServiceError(((ApiResponseCodeException) throwable));
                                     else if (throwable instanceof NoSuchCharacterException)
                                         view.showQueryNoResult();
                                     else
                                         view.showRetryMessage(throwable);
-                                }else {
+                                } else {
                                     view.showOfflineMessage(true);
                                 }
                             }
