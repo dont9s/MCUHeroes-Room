@@ -5,7 +5,7 @@ import com.mcu.nikhil.core_lib.database.model.CharacterModel;
 
 import java.util.List;
 
-interface SearchView extends BaseView {
+public interface SearchView extends BaseView {
     void showProgress();
 
     void hideProgress();

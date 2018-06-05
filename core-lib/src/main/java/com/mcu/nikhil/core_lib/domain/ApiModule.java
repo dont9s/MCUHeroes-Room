@@ -18,17 +18,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class ApiModule {
 
-    @Singleton
     @Provides
-    public MarvelApi provideMarvelApiService (Retrofit retrofit){
-        return  retrofit.create(MarvelApi.class);
+    @Singleton
+    public MarvelApi provideMarvelApiService(Retrofit retrofit) {
+        return retrofit.create(MarvelApi.class);
     }
 
 
-    @Singleton
     @Provides
+    @Singleton
     public Retrofit provideRetrofit(HttpUrl baseUrl, Converter.Factory converterFactory
-            , CallAdapter.Factory callAdapterFactory, OkHttpClient okHttpClient){
+            , CallAdapter.Factory callAdapterFactory, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(converterFactory)
@@ -38,21 +38,22 @@ public class ApiModule {
     }
 
 
-    @Singleton
     @Provides
-    public Converter.Factory provideGsonConverterFactory(Gson gson){
+    @Singleton
+    public Converter.Factory provideGsonConverterFactory(Gson gson) {
         return GsonConverterFactory.create(gson);
     }
 
-
-    @Singleton
     @Provides
-    public Gson provideGson(){return new Gson();}
-
-
     @Singleton
+    public Gson provideGson() {
+        return new Gson();
+    }
+
+
     @Provides
-    public CallAdapter.Factory provideRxJava2CallAdapterFactory(){
+    @Singleton
+    public CallAdapter.Factory provideRxJava2CallAdapterFactory() {
         return RxJava2CallAdapterFactory.create();
     }
 

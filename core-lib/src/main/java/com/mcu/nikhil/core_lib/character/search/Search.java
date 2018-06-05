@@ -11,5 +11,5 @@ import javax.inject.Scope;
 
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-@interface Search {
+public @interface Search {
 }

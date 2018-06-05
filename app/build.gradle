@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -18,9 +17,6 @@ android {
         }
 
 
-        /* replaced with custom MockTestRunner */
-        // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunner "com.mirhoseini.marvel.MarvelTestRunner"
 
     }
     buildTypes {
@@ -77,32 +73,12 @@ android {
 
 }
 
-// Grant animation permissions to avoid test failure because of ui sync.
-task grantAnimationPermissions(type: Exec, dependsOn: 'installMock') {
-    group = 'test'
-    description = 'Grant permissions for testing.'
 
-    def absolutePath = file('..') // Get project absolute path
-    commandLine "$absolutePath/set_animation_permissions.sh com.mirhoseini.marvel".split(" ")
-}
-// Source: http://stackoverflow.com/q/29908110/112705
-afterEvaluate {
-    tasks.each { task ->
-        if (task.name.startsWith('assembleMockAndroidTest')) {
-            task.dependsOn grantAnimationPermissions
-        }
-    }
-}
-
-jacocoAndroidUnitTestReport {
-    // fix jacoco issue with ButterKnife
-    excludes += ['**/*$ViewBinder*.*']
-}
 
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //for compiling the core module we have made, otherwise we won't be able to use it's functions
+    //for compiling the core module we have made, otherwi   se we won't be able to use it's functions
     implementation project(':core-lib')
     //----------------------------------------
     testImplementation rootProject.ext.testLibraries.junit

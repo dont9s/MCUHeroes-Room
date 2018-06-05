@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="character"
+            type="com.mcu.nikhil.core_lib.database.model.CharacterModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        layout_height="wrap_content"
+        layout_width="match_parent">
+
+        <RelativeLayout
+            layout_height="wrap_content"
+            layout_width="match_parent">
+
+            <ImageView
+                android:id="@+id/image"
+                layout_height="wrap_content"
+                layout_width="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/default_image"
+                bind:imageUrl="@{character.thumbnail}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name"
+                android:layout_below="@id/image"
+                android:padding="@dimen/pad_8"
+                android:text="@{character.name}"
+                android:textAlignment="center"
+                android:textAppearance="@style/textAppearanceListItemTitle"
+                />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

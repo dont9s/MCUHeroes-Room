@@ -9,7 +9,7 @@ import com.mcu.nikhil.core_lib.util.StateManager;
 import com.mcu.nikhil.mcuheroes.util.AppConstants;
 import com.mcu.nikhil.mcuheroes.util.AppSchedulerProvider;
 import com.mcu.nikhil.mcuheroes.util.StateManagerImpl;
-import com.mcu.nikhil.mcuheroes.util.Utils;
+import com.mirhoseini.utils.Utils;
 
 import java.io.File;
 
@@ -23,48 +23,48 @@ import okhttp3.HttpUrl;
 @Module
 public class ApplicationModule {
 
-    @Provides
     @Singleton
+    @Provides
     @Named("isDebug")
     boolean provideIsDebug(){return BuildConfig.DEBUG;}
 
 
 
-    @Provides
     @Singleton
+    @Provides
     @Named("networkTimeoutInSeconds")
     int provideNetworkTimeoutInSeconds(){return AppConstants.NETWORK_CONNECTION_TIMEOUT;};
 
-    @Provides
     @Singleton
+    @Provides
     HttpUrl provideEndopint(){return HttpUrl.parse(Constants.BASE_URL);}
 
-    @Provides
     @Singleton
+    @Provides
     SchedulerProvider provideAppScheduler(){return new AppSchedulerProvider();}
 
-    @Provides
     @Singleton
+    @Provides
     @Named("cacheSize")
     long provideCacheSize(){return AppConstants.CACHE_SIZE;}
 
-    @Provides
     @Singleton
+    @Provides
     @Named("cacheMaxAge")
     int provideCacheMaxAgeMinutes(){return AppConstants.CACHE_MAX_AGE;}
 
-    @Provides
     @Singleton
+    @Provides
     @Named("cacheMaxStale")
     int provideCacheMaxStaleDays(){return AppConstants.CACHE_MAX_STALE;}
 
-    @Provides
     @Singleton
+    @Provides
     @Named("retryCount")
     public int provideApiRetryCount(){return AppConstants.API_RETRY_COUNT;}
 
-    @Provides
     @Singleton
+    @Provides
     @Named("cacheDir")
     File provideCacheDir(Context context){return  context.getCacheDir();}
 
@@ -77,7 +77,7 @@ public class ApplicationModule {
         return FirebaseAnalytics.getInstance(context);
     }
 
-    @Provides
     @Singleton
+    @Provides
     public StateManager provideStateManager(StateManagerImpl manager){return manager;}
 }

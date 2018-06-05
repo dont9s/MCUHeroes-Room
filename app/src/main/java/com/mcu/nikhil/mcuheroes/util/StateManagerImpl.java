@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.mcu.nikhil.core_lib.util.StateManager;
+import com.mirhoseini.utils.Utils;
 
 import javax.inject.Inject;
 

@@ -28,21 +28,21 @@ public class ClientModule {
     private static final String CACHE_CONTROL = "Cache-Control";
     private static final String PRAGMA = "Pragma";
 
-    @Singleton
     @Provides
+    @Singleton
     public OkHttpClient provideOkHttpCLient(HttpLoggingInterceptor loggingInterceptor,
                                             @Named("networkTimeoutInSeconds") int networkTimeoutInSeconds,
                                             @Named("isDebug") boolean isDebug,
                                             Cache cache,
                                             @Named("cacheInterceptor") Interceptor cacheInterceptor,
                                             @Named("offlineInterceptor") Interceptor offlineCacheInterceptor,
-                                            @Named("retryInterceptor") Interceptor retryInterceptor){
+                                            @Named("retryInterceptor") Interceptor retryInterceptor) {
         OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder()
                 .addNetworkInterceptor(cacheInterceptor)
                 .addInterceptor(offlineCacheInterceptor)
                 .addInterceptor(retryInterceptor)
                 .cache(cache)
-                .connectTimeout(networkTimeoutInSeconds , TimeUnit.SECONDS);
+                .connectTimeout(networkTimeoutInSeconds, TimeUnit.SECONDS);
 
         //show logs if app is in Debug mode
         if (isDebug)
@@ -51,57 +51,57 @@ public class ClientModule {
         return okHttpClient.build();
     }
 
-    @Singleton
     @Provides
-    public HttpLoggingInterceptor provideHttpLoggingInterceptor(){
+    @Singleton
+    public HttpLoggingInterceptor provideHttpLoggingInterceptor() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         return logging;
     }
 
-    @Singleton
     @Provides
-    public Cache provideCache(@Named("cacheDir")File cacheDir, @Named("cacheSize") long cacheSize){
+    @Singleton
+    public Cache provideCache(@Named("cacheDir") File cacheDir, @Named("cacheSize") long cacheSize) {
         Cache cache = null;
 
-        try{
+        try {
             cache = new Cache(new File(cacheDir.getPath(), HTTP_CACHE_PATH), cacheSize);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return cache;
     }
 
-    @Singleton
     @Provides
+    @Singleton
     @Named("cacheInterceptor")
-    public Interceptor provideCacheInterceptor(@Named("cacheMaxAge") int maxAgeMin){
+    public Interceptor provideCacheInterceptor(@Named("cacheMaxAge") int maxAgeMin) {
         return chain -> {
             Response response = chain.proceed(chain.request());
 
             CacheControl cacheControl = new CacheControl.Builder()
-                    .maxAge(maxAgeMin , TimeUnit.MINUTES)
+                    .maxAge(maxAgeMin, TimeUnit.MINUTES)
                     .build();
 
             return response.newBuilder()
                     .removeHeader(PRAGMA)
                     .removeHeader(CACHE_CONTROL)
-                    .header(CACHE_CONTROL  , cacheControl.toString())
+                    .header(CACHE_CONTROL, cacheControl.toString())
                     .build();
         };
     }
 
-    @Singleton
     @Provides
+    @Singleton
     @Named("offlineInterceptor")
-    public  Interceptor provideOfflineCacheInterceptor(StateManager stateManager,
-                                                       @Named("cacheMaxStale") int maxStaleDelay){
+    public Interceptor provideOfflineCacheInterceptor(StateManager stateManager,
+                                                      @Named("cacheMaxStale") int maxStaleDelay) {
         return chain -> {
             Request request = chain.request();
 
-            if(!stateManager.isConnect()){
+            if (!stateManager.isConnect()) {
                 CacheControl cacheControl = new CacheControl.Builder()
-                        .maxStale(maxStaleDelay , TimeUnit.DAYS)
+                        .maxStale(maxStaleDelay, TimeUnit.DAYS)
                         .build();
 
                 request = request.newBuilder()
@@ -113,33 +113,33 @@ public class ClientModule {
         };
     }
 
-    @Singleton
     @Provides
+    @Singleton
     @Named("retryInterceptor")
-    public Interceptor provideRetryInterceptor(@Named("retryCount") int retryCount){
+    public Interceptor provideRetryInterceptor(@Named("retryCount") int retryCount) {
         return chain -> {
-          Request request = chain.request();
-          Response response = null;
-            IOException  exception = null;
+            Request request = chain.request();
+            Response response = null;
+            IOException exception = null;
 
             int tryCount = 0;
-            while (tryCount < retryCount && (null == response || !response.isSuccessful())){
+            while (tryCount < retryCount && (null == response || !response.isSuccessful())) {
                 //retry the request
-                try{
+                try {
                     response = chain.proceed(request);
-                }catch (IOException e){
+                } catch (IOException e) {
                     exception = e;
-                }finally {
+                } finally {
                     tryCount++;
                 }
             }
 
             //throw last exception
-            if(null == response  && null != exception)
+            if (null == response && null != exception)
                 throw exception;
 
             //otherwise pass the original response on
-            return  response;
+            return response;
         };
     }
 

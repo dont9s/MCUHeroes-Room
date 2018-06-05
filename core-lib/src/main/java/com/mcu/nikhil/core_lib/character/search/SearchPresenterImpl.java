@@ -27,7 +27,7 @@ public class SearchPresenterImpl implements SearchPresenter {
     private Disposable characterDisposable;
 
     @Inject
-    SearchPresenterImpl(SchedulerProvider scheduler) {
+    public SearchPresenterImpl(SchedulerProvider scheduler) {
         this.scheduler = scheduler;
     }
 

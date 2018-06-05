@@ -16,11 +16,11 @@ public class AndroidModule {
         this.application = application;
     }
 
-    @Provides
     @Singleton
+    @Provides
     Context provideContext(){return application.getApplicationContext();}
 
-    @Provides
     @Singleton
+    @Provides
     Resources provideResources(){return application.getResources();}
 }

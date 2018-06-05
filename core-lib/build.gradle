@@ -1,6 +1,4 @@
 apply plugin: 'java-library'
-apply plugin: 'jacoco'
-apply plugin: 'me.tatarka.retrolambda'
 
 
 configurations {
@@ -13,21 +11,7 @@ sourceSets {
 }
 
 
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled true
-    }
-}
 
-retrolambda {
-
-    javaVersion JavaVersion.VERSION_1_7
-    jvmArgs '-noverify' , '-arg1', '-arg2'
-    defaultMethods false
-    incremental true
-
-}
 
 
 dependencies {
@@ -37,12 +21,12 @@ dependencies {
     testImplementation rootProject.ext.testLibraries.junit
     testImplementation rootProject.ext.testLibraries.mockito
 
-    implementation rootProject.ext.libraries.retrofit
-    implementation rootProject.ext.libraries.retrofitConverter
-    implementation rootProject.ext.libraries.retrofitAdapter
+    api rootProject.ext.libraries.retrofit
+    api rootProject.ext.libraries.retrofitConverter
+    api rootProject.ext.libraries.retrofitAdapter
 
-    implementation rootProject.ext.libraries.okhttp
-    implementation rootProject.ext.libraries.okhttpLogging
+    api rootProject.ext.libraries.okhttp
+    api rootProject.ext.libraries.okhttpLogging
 
     implementation rootProject.ext.libraries.dagger
     provided rootProject.ext.aptLibraries.daggerCompiler

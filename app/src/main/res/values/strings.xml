@@ -3,4 +3,23 @@
     <string name="sql_error_message">Unable to create Database</string>
     <string name="sql_upgrade_error">Unable to upgrade database from version</string>
     <string name="to_new">to new</string>
+    <string name="character_label">Character: </string>
+    <string name="character_hint">Enter name...</string>
+    <string name="show">Show</string>
+    <string name="character_error">please enter a character name</string>
+    <string name="retry_error">Retry error!</string>
+    <string name="error">Error</string>
+    <string name="retry_message">An error happened</string>
+    <string name="retry">Retry</string>
+    <string name="no_result">The entered name is wrong</string>
+    <string name="service_error">Service Error!</string>
+    <string name="query_error">Query error!</string>
+    <string name="recent_searches_label">Your recent searches:</string>
+    <string name="no_recent">no recent search</string>
+    <string name="splash_thread_interrupt">Splash thread interrupted!!!</string>
+    <string name="main_activity_created">Main activity created</string>
+    <string name="main_title">Characters</string>
+    <string name="offline_message">No internet connection, Offline data!</string>
+    <string name="go_online">Go Online</string>
+    <string name="character_activity_created">Character activity created</string>
 </resources>
