@@ -16,10 +16,27 @@
 
     <ProgressBar
         android:id="@+id/indeterminateLoading"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="10dip"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:indeterminate="true"
+        android:backgroundTint="@color/colorPrimary"
+        android:indeterminateTint="#1a09d6"
+        android:layout_marginTop="-7dp"
         android:visibility="gone" />
+
+    <!--<ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:max="100"
+        android:backgroundTint="@color/white"
+        android:layout_below="@+id/framelauout"
+        android:indeterminateTint="#1a09d6"
+        android:layout_marginTop="-7dp"/>-->
 
     <FrameLayout
         android:id="@+id/search_fragment"
