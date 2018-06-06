@@ -14,6 +14,6 @@ public class DatabaseModule {
     @Provides
     @Singleton
     DatabaseHelper provideDatabaseHelperService(DatabaseHelperImpl databaseHelper){
-        return databaseHelper;
+        return ((DatabaseHelper) databaseHelper);
     }
 }

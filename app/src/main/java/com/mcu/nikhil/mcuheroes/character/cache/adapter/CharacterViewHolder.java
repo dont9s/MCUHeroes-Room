@@ -1,6 +1,5 @@
 package com.mcu.nikhil.mcuheroes.character.cache.adapter;
 
-import android.databinding.Bindable;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +8,7 @@ import android.view.View;
 import com.mcu.nikhil.core_lib.database.model.CharacterModel;
 import com.mcu.nikhil.mcuheroes.BR;
 
-public class CharacterViewHolder extends RecyclerView.ViewHolder  {
+public class CharacterViewHolder extends RecyclerView.ViewHolder {
 
     public final View view;
     private CharacterModel character;
@@ -31,4 +30,5 @@ public class CharacterViewHolder extends RecyclerView.ViewHolder  {
         binding.setVariable(BR.character, character);
         binding.executePendingBindings();
     }
+
 }

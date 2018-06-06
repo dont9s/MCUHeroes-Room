@@ -6,15 +6,17 @@ import dagger.Provides;
 @Module
 public class SearchModule {
 
-    @Provides
+
     @Search
+    @Provides
     public SearchInteractor provideInteractor(SearchInteractorImpl interactor){
-        return interactor;
+        return ((SearchInteractor) interactor);
     }
 
-    @Provides
+
     @Search
+    @Provides
     public SearchPresenter providePresenter(SearchPresenterImpl presenter){
-        return presenter;
+        return ((SearchPresenter) presenter);
     }
 }

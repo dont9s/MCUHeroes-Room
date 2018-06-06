@@ -13,6 +13,11 @@ public class CachePresenterImpl implements CachePresenter {
 
     private CacheView view;
 
+
+    @Inject
+    public CachePresenterImpl() {
+    }
+
     @Override
     public void bind(CacheView view) {
         this.view = view;

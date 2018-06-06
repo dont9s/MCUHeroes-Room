@@ -2,14 +2,17 @@ package com.mcu.nikhil.mcuheroes;
 
 import com.mcu.nikhil.core_lib.character.cache.CacheModule;
 import com.mcu.nikhil.core_lib.character.search.SearchModule;
-import com.mcu.nikhil.core_lib.domain.ApiModule;
-import com.mcu.nikhil.core_lib.domain.ClientModule;
 import com.mcu.nikhil.mcuheroes.activity.CharacterActivity;
 import com.mcu.nikhil.mcuheroes.activity.MainActivity;
 import com.mcu.nikhil.mcuheroes.activity.SplashActivity;
 import com.mcu.nikhil.mcuheroes.character.cache.CacheSubComponent;
 import com.mcu.nikhil.mcuheroes.character.search.SearchSubComponent;
-import com.mcu.nikhil.mcuheroes.database.DatabaseModule;
+import com.mcu.nikhil.mcuheroes.di.AndroidModule;
+import com.mcu.nikhil.mcuheroes.di.ApiModule;
+import com.mcu.nikhil.mcuheroes.di.ApplicationModule;
+import com.mcu.nikhil.mcuheroes.di.ClientModule;
+import com.mcu.nikhil.mcuheroes.di.DatabaseModule;
+
 
 import javax.inject.Singleton;
 

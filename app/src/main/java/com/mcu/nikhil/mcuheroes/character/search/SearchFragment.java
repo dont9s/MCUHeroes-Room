@@ -1,13 +1,11 @@
 package com.mcu.nikhil.mcuheroes.character.search;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,14 +19,11 @@ import android.widget.EditText;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.mcu.nikhil.core_lib.character.search.ApiResponseCodeException;
 import com.mcu.nikhil.core_lib.character.search.SearchPresenter;
-import com.mcu.nikhil.core_lib.character.search.SearchPresenterImpl;
 import com.mcu.nikhil.core_lib.character.search.SearchView;
 import com.mcu.nikhil.core_lib.database.model.CharacterModel;
 import com.mcu.nikhil.mcuheroes.MCUHeroesApplication;
 import com.mcu.nikhil.mcuheroes.R;
-import com.mcu.nikhil.mcuheroes.activity.MainActivity;
 import com.mcu.nikhil.mcuheroes.base.BaseFragment;
-import com.mcu.nikhil.mcuheroes.util.AppSchedulerProvider;
 import com.mirhoseini.utils.Utils;
 
 import java.util.List;
@@ -126,7 +121,7 @@ public class SearchFragment extends BaseFragment implements SearchView {
 
     @Override
     protected void injectDependencies(MCUHeroesApplication application) {
-        application.getSearchComponent().inject(this);
+        application.getSearchSubComponent().inject(this);
     }
 
 

@@ -18,13 +18,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 public class DatabaseHelperImpl extends OrmLiteSqliteOpenHelper implements DatabaseHelper {
 
     private static final String DATABASE_NAME = "mcuheroes.db";
     private static final int DATABASE_VERSION = 1;
     public static final long ROWS = 5L;
-    @Inject
-    protected MCUHeroesApplication application;
+//    @Inject
+//    protected MCUHeroesApplication application;
 
     private Dao<CharacterModel, Integer> characterDao;
 
@@ -40,9 +42,8 @@ public class DatabaseHelperImpl extends OrmLiteSqliteOpenHelper implements Datab
             //lifetime i.e. first time the application start
             TableUtils.createTable(connectionSource, CharacterModel.class);
         }catch (SQLException e){
-            Log.e(DatabaseHelper.class.getName(),
-                    application.getString(R.string.sql_error_message),
-                    e);
+            Timber.e(e,DatabaseHelper.class.getName(),
+                    "Unable to create Database");
         }
     }
 
@@ -52,12 +53,11 @@ public class DatabaseHelperImpl extends OrmLiteSqliteOpenHelper implements Datab
             TableUtils.dropTable(connectionSource, CharacterModel.class, true);
             onCreate(database, connectionSource);
         }catch (SQLException e){
-            Log.e(DatabaseHelper.class.getName(),
-                    application.getString(R.string.sql_upgrade_error) +
+            Timber.e(e,DatabaseHelper.class.getName(),
+                    "Unable to upgrade database from version" +
                             oldVersion +
-                            application.getString(R.string.to_new) +
-                            newVersion,
-                     e);
+                            "to new" +
+                            newVersion);
         }
     }
 

@@ -7,6 +7,7 @@ import com.mcu.nikhil.core_lib.character.cache.CacheModule;
 import com.mcu.nikhil.core_lib.character.search.SearchModule;
 import com.mcu.nikhil.mcuheroes.character.cache.CacheSubComponent;
 import com.mcu.nikhil.mcuheroes.character.search.SearchSubComponent;
+import com.mcu.nikhil.mcuheroes.di.AndroidModule;
 
 public abstract class MCUHeroesApplication extends Application {
 
@@ -36,7 +37,7 @@ public abstract class MCUHeroesApplication extends Application {
         cacheSubComponent = null;
     }
 
-    public SearchSubComponent getSearchComponent(){
+    public SearchSubComponent getSearchSubComponent(){
         if (searchSubComponent == null) {
             createSearchSubComponent();
         }

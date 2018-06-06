@@ -7,8 +7,8 @@ import com.j256.ormlite.table.DatabaseTableConfig;
 import java.sql.SQLException;
 import java.util.List;
 
-class CharacterDao extends BaseDaoImpl<CharacterModel, Integer> {
-    protected CharacterDao(Class<CharacterModel> dataClass) throws SQLException {
+public class CharacterDao extends BaseDaoImpl<CharacterModel, Integer> {
+    public CharacterDao(Class<CharacterModel> dataClass) throws SQLException {
         super(dataClass);
     }
 

@@ -22,4 +22,5 @@
     <string name="offline_message">No internet connection, Offline data!</string>
     <string name="go_online">Go Online</string>
     <string name="character_activity_created">Character activity created</string>
+    <string name="marvel_logo_text">Marvel Logo</string>
 </resources>

@@ -60,6 +60,7 @@ public class CacheFragment extends BaseFragment implements CacheView {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
+    @Inject
     public CacheFragment() {
     }
 

@@ -5,9 +5,10 @@ import dagger.Provides;
 
 @Module
 public class CacheModule {
-    @Provides
+
     @Cache
+    @Provides
     public CachePresenter providePresenter(CachePresenterImpl presenter){
-        return presenter;
+        return ((CachePresenter) presenter);
     }
 }

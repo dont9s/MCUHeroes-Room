@@ -31,13 +31,13 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
 
         ButterKnife.bind(this);
-        //the thread towait for splash screen events
+        //the thread to wait for splash screen events
         splashThread = new Thread(){
             @Override
             public void run() {
                 try{
                     synchronized (this){
-                        //wait given time or ecxit on touch
+                        //wait given time or exit on touch
                         wait(AppConstants.SPLASH_TIMEOUT_SEC);
                     }
                 }catch (InterruptedException ex){
