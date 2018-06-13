@@ -1,7 +1,5 @@
 package com.mcu.nikhil.mcuheroes.util;
 
-import com.mcu.nikhil.core_lib.util.SchedulerProvider;
-
 import javax.inject.Inject;
 
 import io.reactivex.Scheduler;

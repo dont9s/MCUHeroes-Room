@@ -6,7 +6,7 @@
     <data>
         <variable
             name="character"
-            type="com.mcu.nikhil.core_lib.database.model.CharacterModel" />
+            type="com.mcu.nikhil.mcuheroes.database.model.CharacterModel" />
     </data>
 
 

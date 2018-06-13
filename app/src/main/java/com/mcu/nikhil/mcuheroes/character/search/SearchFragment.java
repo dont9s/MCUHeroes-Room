@@ -17,10 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.mcu.nikhil.core_lib.character.search.ApiResponseCodeException;
-import com.mcu.nikhil.core_lib.character.search.SearchPresenter;
-import com.mcu.nikhil.core_lib.character.search.SearchView;
-import com.mcu.nikhil.core_lib.database.model.CharacterModel;
+import com.mcu.nikhil.mcuheroes.database.model.CharacterModel;
 import com.mcu.nikhil.mcuheroes.MCUHeroesApplication;
 import com.mcu.nikhil.mcuheroes.R;
 import com.mcu.nikhil.mcuheroes.base.BaseFragment;

@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.mcu.nikhil.core_lib.character.cache.CachePresenter;
-import com.mcu.nikhil.core_lib.character.cache.CacheView;
-import com.mcu.nikhil.core_lib.database.model.CharacterModel;
+import com.mcu.nikhil.mcuheroes.database.model.CharacterModel;
 import com.mcu.nikhil.mcuheroes.MCUHeroesApplication;
 import com.mcu.nikhil.mcuheroes.R;
 import com.mcu.nikhil.mcuheroes.base.BaseFragment;

@@ -3,9 +3,9 @@ package com.mcu.nikhil.mcuheroes.di;
 import android.content.Context;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.mcu.nikhil.core_lib.util.Constants;
-import com.mcu.nikhil.core_lib.util.SchedulerProvider;
-import com.mcu.nikhil.core_lib.util.StateManager;
+import com.mcu.nikhil.mcuheroes.util.Constants;
+import com.mcu.nikhil.mcuheroes.util.SchedulerProvider;
+import com.mcu.nikhil.mcuheroes.util.StateManager;
 import com.mcu.nikhil.mcuheroes.BuildConfig;
 import com.mcu.nikhil.mcuheroes.util.AppConstants;
 import com.mcu.nikhil.mcuheroes.util.AppSchedulerProvider;

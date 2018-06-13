@@ -92,7 +92,7 @@ dependencies {
     androidTestImplementation rootProject.ext.testLibraries.espresso
     androidTestImplementation rootProject.ext.testLibraries.espressoContrib
     // Test helpers
-//    androidTestImplementation rootProject.ext.testLibraries.room
+    androidTestImplementation rootProject.ext.testLibraries.room
 
     implementation rootProject.ext.libraries.constraintLayout
     implementation rootProject.ext.libraries.appCompat
@@ -102,15 +102,23 @@ dependencies {
     implementation rootProject.ext.libraries.recyclerView
     implementation rootProject.ext.libraries.cardView
     implementation rootProject.ext.libraries.palette
-//    implementation rootProject.ext.libraries.room
+    implementation rootProject.ext.libraries.room
     // optional - RxJava support for Room
-//    implementation rootProject.ext.libraries.roomrx
-//    annotationProcessor rootProject.ext.aptLibraries.roomCompiler
+    implementation rootProject.ext.libraries.roomrx
+    annotationProcessor rootProject.ext.aptLibraries.roomCompiler
 
     implementation rootProject.ext.libraries.rxandroid
     implementation rootProject.ext.libraries.rxjava
     implementation rootProject.ext.libraries.rxbinding
 
+
+
+    implementation rootProject.ext.libraries.retrofit
+    implementation rootProject.ext.libraries.retrofitConverter
+    implementation rootProject.ext.libraries.retrofitAdapter
+
+    implementation rootProject.ext.libraries.okhttp
+    implementation rootProject.ext.libraries.okhttpLogging
 
     implementation rootProject.ext.libraries.utils
 
@@ -125,6 +133,7 @@ dependencies {
 
     implementation rootProject.ext.libraries.timber
 
+    implementation rootProject.ext.libraries.ormLiteCore
     implementation rootProject.ext.libraries.ormLite
 
     implementation rootProject.ext.libraries.firebaseCore

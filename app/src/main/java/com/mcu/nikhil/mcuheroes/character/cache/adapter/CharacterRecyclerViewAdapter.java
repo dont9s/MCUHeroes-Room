@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jakewharton.rxbinding2.view.RxView;
-import com.mcu.nikhil.core_lib.database.model.CharacterModel;
+import com.mcu.nikhil.mcuheroes.database.model.CharacterModel;
 import com.mcu.nikhil.mcuheroes.R;
 
 import java.util.ArrayList;

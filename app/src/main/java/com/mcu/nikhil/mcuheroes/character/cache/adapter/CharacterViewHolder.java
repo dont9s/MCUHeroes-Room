@@ -5,7 +5,7 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.mcu.nikhil.core_lib.database.model.CharacterModel;
+import com.mcu.nikhil.mcuheroes.database.model.CharacterModel;
 import com.mcu.nikhil.mcuheroes.BR;
 
 public class CharacterViewHolder extends RecyclerView.ViewHolder {

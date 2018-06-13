@@ -3,8 +3,8 @@ package com.mcu.nikhil.mcuheroes;
 import android.app.Application;
 import android.content.Context;
 
-import com.mcu.nikhil.core_lib.character.cache.CacheModule;
-import com.mcu.nikhil.core_lib.character.search.SearchModule;
+import com.mcu.nikhil.mcuheroes.character.cache.CacheModule;
+import com.mcu.nikhil.mcuheroes.character.search.SearchModule;
 import com.mcu.nikhil.mcuheroes.character.cache.CacheSubComponent;
 import com.mcu.nikhil.mcuheroes.character.search.SearchSubComponent;
 import com.mcu.nikhil.mcuheroes.di.AndroidModule;

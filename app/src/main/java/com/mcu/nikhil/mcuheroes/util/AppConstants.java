@@ -1,8 +1,6 @@
 
 package com.mcu.nikhil.mcuheroes.util;
 
-import com.mcu.nikhil.core_lib.util.Constants;
-
 public class AppConstants extends Constants {
 
     public static final int SPLASH_TIMEOUT_SEC = 3 * 1000; //3 sec

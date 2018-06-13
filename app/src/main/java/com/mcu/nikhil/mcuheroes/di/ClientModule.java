@@ -1,7 +1,7 @@
 package com.mcu.nikhil.mcuheroes.di;
 
 
-import com.mcu.nikhil.core_lib.util.StateManager;
+import com.mcu.nikhil.mcuheroes.util.StateManager;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package com.mcu.nikhil.mcuheroes.di;
 
 import com.google.gson.Gson;
-import com.mcu.nikhil.core_lib.domain.client.MarvelApi;
+import com.mcu.nikhil.mcuheroes.domain.client.MarvelApi;
 
 import javax.inject.Singleton;
 

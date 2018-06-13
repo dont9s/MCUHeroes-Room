@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 
-import com.mcu.nikhil.core_lib.database.model.CharacterModel;
+import com.mcu.nikhil.mcuheroes.database.model.CharacterModel;
 import com.mcu.nikhil.mcuheroes.ApplicationComponent;
 import com.mcu.nikhil.mcuheroes.BR;
 import com.mcu.nikhil.mcuheroes.MCUHeroesApplication;

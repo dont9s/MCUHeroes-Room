@@ -14,7 +14,7 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.mcu.nikhil.core_lib.database.model.CharacterModel;
+import com.mcu.nikhil.mcuheroes.database.model.CharacterModel;
 import com.mcu.nikhil.mcuheroes.ApplicationComponent;
 import com.mcu.nikhil.mcuheroes.MCUHeroesApplication;
 import com.mcu.nikhil.mcuheroes.R;

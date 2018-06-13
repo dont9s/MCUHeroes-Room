@@ -1,7 +1,7 @@
 package com.mcu.nikhil.mcuheroes;
 
-import com.mcu.nikhil.core_lib.character.cache.CacheModule;
-import com.mcu.nikhil.core_lib.character.search.SearchModule;
+import com.mcu.nikhil.mcuheroes.character.cache.CacheModule;
+import com.mcu.nikhil.mcuheroes.character.search.SearchModule;
 import com.mcu.nikhil.mcuheroes.activity.CharacterActivity;
 import com.mcu.nikhil.mcuheroes.activity.MainActivity;
 import com.mcu.nikhil.mcuheroes.activity.SplashActivity;
